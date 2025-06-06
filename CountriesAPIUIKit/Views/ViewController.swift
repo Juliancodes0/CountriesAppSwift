@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    var viewModel: ViewModel = ViewModel()
+    var viewModel: ViewModel = ViewModel(countryService: NetworkManager())
     var countriesTableView = UITableView()
     var searchField = UISearchTextField()
     var originalList: [Country] = []
@@ -84,19 +84,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func searchTextChanged() {
-        guard let searchText = searchField.text, !searchText.isEmpty else {
-            viewModel.countries = originalList
-            noResultsLabel.isHidden = true
-            countriesTableView.reloadData()
-            return
-        }
-        
-        let filteredList = originalList.filter {
-            $0.name.lowercased().contains(searchText.lowercased())
-        }
-        
-        viewModel.countries = filteredList
-        noResultsLabel.isHidden = !filteredList.isEmpty
+        guard let searchText = searchField.text else { return }
+
+        viewModel.search(by: searchText)
+        noResultsLabel.isHidden = !viewModel.countries.isEmpty
         countriesTableView.reloadData()
     }
 }

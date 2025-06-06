@@ -8,23 +8,55 @@
 import Foundation
 
 class ViewModel {
-    var countries: [Country] = []
+    private let countryService: CountryService
 
-    func downloadCountryData (completion: @escaping () -> ()) {
-        NetworkManager.downloadDataFromURLString(urlString: "https://gist.githubusercontent.com/peymano-wmt/32dcb892b06648910ddd40406e37fdab/raw/db25946fd77c5873b0303b858e861ce724e0dcd0/countries.json", type: [Country].self) { result in
+    private var allCountries: [Country] = []
+
+    private(set) var countries: [Country] = []
+
+    init(countryService: CountryService) {
+        self.countryService = countryService
+    }
+
+    func downloadCountryData(completion: @escaping () -> Void) {
+        countryService.fetchCountries { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let countries):
-                    self.countries = countries
-                    completion()
+                self.allCountries = countries
+                self.countries = countries
             case .failure(let error):
-                print("error \(error.localizedDescription)")
+                print("Error: \(error.localizedDescription)")
+                self.allCountries = []
+                self.countries = []
             }
+            completion()
         }
     }
+
+    func search(by keyword: String) {
+        let trimmed = keyword.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            countries = allCountries
+            return
+        }
+
+        let lowercasedKeyword = trimmed.lowercased()
+        countries = allCountries.filter {
+            $0.name.lowercased().contains(lowercasedKeyword) ||
+            $0.region.lowercased().contains(lowercasedKeyword) ||
+            $0.capital.lowercased().contains(lowercasedKeyword)
+        }
+    }
+
+    func filter(by region: String) {
+        countries = allCountries.filter { $0.region == region }
+    }
+
+    func resetCountries() {
+        countries = allCountries
+    }
 }
-
-
-
 
 
 

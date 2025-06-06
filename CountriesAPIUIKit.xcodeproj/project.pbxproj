@@ -20,6 +20,9 @@
 		058E66DE2B570F3D00BAB2FB /* NetworkManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = 053B5F532B51CA3C00EA7DE0 /* NetworkManager .swift */; };
 		058E66DF2B570F5700BAB2FB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053B5F512B51C96D00EA7DE0 /* Country.swift */; };
 		05AF31D02B5667DB00B10275 /* CountriesAPIUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AF31CF2B5667DB00B10275 /* CountriesAPIUIKitTests.swift */; };
+		B94719BA2DF3747600E960AA /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053B5F4B2B51C94300EA7DE0 /* ViewModel.swift */; };
+		B94719BF2DF377F600E960AA /* MockCountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94719BE2DF377F600E960AA /* MockCountryService.swift */; };
+		B94719C22DF3783500E960AA /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94719C12DF3783500E960AA /* CountryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,8 @@
 		053B5F552B51D03700EA7DE0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		05AF31CD2B5667DB00B10275 /* CountriesAPIUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesAPIUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05AF31CF2B5667DB00B10275 /* CountriesAPIUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIUIKitTests.swift; sourceTree = "<group>"; };
+		B94719BE2DF377F600E960AA /* MockCountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCountryService.swift; sourceTree = "<group>"; };
+		B94719C12DF3783500E960AA /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 				053B5F372B51C92100EA7DE0 /* SceneDelegate.swift */,
 				053B5F4D2B51C94800EA7DE0 /* Managers */,
 				053B5F4A2B51C93500EA7DE0 /* Views */,
+				B94719BB2DF377D800E960AA /* Mocks */,
 				053B5F492B51C92E00EA7DE0 /* ViewModels */,
 				053B5F502B51C96000EA7DE0 /* Models */,
 				053B5F3B2B51C92100EA7DE0 /* Main.storyboard */,
@@ -141,6 +147,23 @@
 				05AF31CF2B5667DB00B10275 /* CountriesAPIUIKitTests.swift */,
 			);
 			path = CountriesAPIUIKitTests;
+			sourceTree = "<group>";
+		};
+		B94719BB2DF377D800E960AA /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B94719C02DF3782100E960AA /* Protocols */,
+				B94719BE2DF377F600E960AA /* MockCountryService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B94719C02DF3782100E960AA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B94719C12DF3783500E960AA /* CountryService.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,10 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B94719C22DF3783500E960AA /* CountryService.swift in Sources */,
 				053B5F3A2B51C92100EA7DE0 /* ViewController.swift in Sources */,
 				053B5F362B51C92100EA7DE0 /* AppDelegate.swift in Sources */,
 				053B5F4C2B51C94300EA7DE0 /* ViewModel.swift in Sources */,
 				053B5F572B51D03700EA7DE0 /* CustomTableViewCell.swift in Sources */,
+				B94719BF2DF377F600E960AA /* MockCountryService.swift in Sources */,
 				053B5F542B51CA3C00EA7DE0 /* NetworkManager .swift in Sources */,
 				053B5F522B51C96D00EA7DE0 /* Country.swift in Sources */,
 				053B5F382B51C92100EA7DE0 /* SceneDelegate.swift in Sources */,
@@ -260,6 +285,7 @@
 			files = (
 				05AF31D02B5667DB00B10275 /* CountriesAPIUIKitTests.swift in Sources */,
 				058E66DF2B570F5700BAB2FB /* Country.swift in Sources */,
+				B94719BA2DF3747600E960AA /* ViewModel.swift in Sources */,
 				058E66DE2B570F3D00BAB2FB /* NetworkManager .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
